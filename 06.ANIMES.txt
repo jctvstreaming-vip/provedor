@@ -1,0 +1,95 @@
+#EXTM3U size="Poster"
+
+#EXTINF:-1 type="playlist" tvg-logo="https://www.mediafire.com/convkey/aa16/oae226lxrckbl235g.jpg",009-1 (2006)
+#EXTBG:https://4kwallpapers.com/images/walls/thumbs_2t/8324.png
+https://drive.google.com/uc?id=11dmBhnIVkWCPa76Zi5AbzCgHDHOwaWfS&export=download/view
+
+#EXTINF:-1 type="playlist" tvg-logo="https://www.mediafire.com/convkey/5653/g1bk3m4vmmjr7vp5g.jpg",86 (2021)
+#EXTBG:https://4kwallpapers.com/images/walls/thumbs_2t/8324.png
+https://drive.google.com/uc?id=11a_NYzIfTcWCE1RtBZXmmP2cnUsg4jXH&export=download/view
+
+#EXTINF:-1 type="playlist" tvg-logo="https://www.mediafire.com/convkey/da4b/pyvpi1bvco8xh9y5g.jpg",Actors Songs Connection (2019)
+#EXTBG:https://4kwallpapers.com/images/walls/thumbs_2t/8324.png
+https://drive.google.com/uc?id=11mdHAu7LsEGtaxZhUwIBYJYRZa5WF_w2&export=download/view
+
+#EXTINF:-1 type="playlist" tvg-logo="https://www.mediafire.com/convkey/7e79/788tw4ree91hhl75g.jpg",Adachi to Shimamura (2020)
+#EXTBG:https://4kwallpapers.com/images/walls/thumbs_2t/8324.png
+https://drive.google.com/uc?id=11uEAJK01tujg1yxnM87Ks1L1YtgcRrxz&export=download/view
+
+#EXTINF:-1 type="playlist" tvg-logo="https://www.mediafire.com/convkey/2d94/qrmas1ba2sqqsb25g.jpg",Arte (2020)
+#EXTBG:https://4kwallpapers.com/images/walls/thumbs_2t/8324.png
+https://drive.google.com/uc?id=11wKG9GxKaRrLXloeR947DSqQplkl8ooS&export=download/view
+
+#EXTINF:-1 type="playlist" tvg-logo="https://www.mediafire.com/convkey/7e47/q38z9stqgtfxta85g.jpg",Assault Lily: Bouquet (2020)
+#EXTBG:https://4kwallpapers.com/images/walls/thumbs_2t/8324.png
+https://drive.google.com/uc?id=11yWgQWH9biF0f6xYKhlXYM0-LiQTqRoT&export=download/view
+
+#EXTINF:-1 type="playlist" tvg-logo="https://www.mediafire.com/convkey/e8b0/q1jkm7bm1dljxcm5g.jpg",Ataque dos Titas (2013)
+#EXTBG:https://4kwallpapers.com/images/walls/thumbs_2t/8324.png
+https://drive.google.com/uc?id=11yyH2sOMzYfrnJlyqIGzx-UzaOPn1jqv&export=download/view
+
+#EXTINF:-1 type="playlist" tvg-logo="https://www.mediafire.com/convkey/390f/58ijdwz8fdp4gae5g.jpg",Avatar: A Lenda de Aang (2005)
+#EXTBG:https://4kwallpapers.com/images/walls/thumbs_2t/8324.png
+https://drive.google.com/uc?id=120hSW3eyTGHnyzWuj4PCqg97VY5PqOqr&export=download/view
+
+#EXTINF:-1 type="playlist" tvg-logo="https://www.mediafire.com/convkey/30e1/n1zp8g3jf2uwzse5g.jpg",Avatar: A Lenda De Korra (2012)
+#EXTBG:https://4kwallpapers.com/images/walls/thumbs_2t/8324.png
+https://drive.google.com/uc?id=121jDtn4iBPGrUqOnPFigE9pvAW9t9ZB3&export=download/view
+
+#EXTINF:-1 type="playlist" tvg-logo="https://www.mediafire.com/convkey/4388/134npin9sy5mehz5g.jpg",Beastars (2019)
+#EXTBG:https://4kwallpapers.com/images/walls/thumbs_2t/8324.png
+https://drive.google.com/uc?id=12GmNV_rOAvjlkSNfkbp0ddgKDCb6gGni&export=download/view
+
+#EXTINF:-1 type="playlist" tvg-logo="https://www.mediafire.com/convkey/7d94/cjkmmvx9uzbli6p5g.jpg",Boku no Tonari ni Ankoku Hakaishin ga Imasu (2020)
+#EXTBG:https://4kwallpapers.com/images/walls/thumbs_2t/8324.png
+https://drive.google.com/uc?id=12IeAvchG1WDlAwC-XJLHi4ZxLfqAr_Wa&export=download/view
+
+#EXTINF:-1 type="playlist" tvg-logo="https://www.mediafire.com/convkey/d2ef/6y5016ypslmm4pt5g.jpg",Caverna do Dragao (1983)
+#EXTBG:https://4kwallpapers.com/images/walls/thumbs_2t/8324.png
+https://drive.google.com/uc?id=12OqFskUmtlU5YvmWT1udL_s-PoVQHE2P&export=download/view
+
+#EXTINF:-1 type="playlist" tvg-logo="https://www.mediafire.com/convkey/d0b4/k7noib9p9tu8csc5g.jpg",Digimon Adventure (1999)
+#EXTBG:https://4kwallpapers.com/images/walls/thumbs_2t/8324.png
+https://drive.google.com/uc?id=12Parj9ScGoxQvIDI3sVq-NX7CkI770hZ&export=download/view
+
+#EXTINF:-1 type="playlist" tvg-logo="https://www.mediafire.com/convkey/2467/j20ei850imd7r0o5g.jpg",Dr. Stone (2019)
+#EXTBG:https://4kwallpapers.com/images/walls/thumbs_2t/8324.png
+https://drive.google.com/uc?id=13fvVgCUanOFtorP5ra4skmbS58Y59lUn&export=download/view
+
+#EXTINF:-1 type="playlist" tvg-logo="https://www.mediafire.com/convkey/52f5/1397rb8qd1m0p3i5g.jpg",Invencivel (2021)
+#EXTBG:https://4kwallpapers.com/images/walls/thumbs_2t/8324.png
+https://drive.google.com/uc?id=13nuADdT4EXNULvyya77CO8g9T1SEpUvB&export=download/view
+
+#EXTINF:-1 type="playlist" tvg-logo="https://www.mediafire.com/convkey/56ba/i8pxb0qkmacfyi95g.jpg",O Sangue de Zeus (2020)
+#EXTBG:https://4kwallpapers.com/images/walls/thumbs_2t/8324.png
+https://drive.google.com/uc?id=13jcxxDWgiQNvL6IGvVSaw_r1jXe_HkgW&export=download/view
+
+#EXTINF:-1 type="playlist" tvg-logo="https://www.mediafire.com/convkey/9f62/pt2fymp31ucmgy95g.jpg",One Room (2017)
+#EXTBG:https://4kwallpapers.com/images/walls/thumbs_2t/8324.png
+https://drive.google.com/uc?id=14kArXfxg73sw81KXfSWmNT89K02edipB&export=download/view
+
+#EXTINF:-1 type="playlist" tvg-logo="https://www.mediafire.com/convkey/2634/g8evv7o1ixyiy9r5g.jpg",Ousama Ranking (2021)
+#EXTBG:https://4kwallpapers.com/images/walls/thumbs_2t/8324.png
+https://drive.google.com/uc?id=17KWskSHQEGUslPR-JDsHKeMfjYXpBhcc&export=download/view
+
+#EXTINF:-1 type="playlist" tvg-logo="https://www.mediafire.com/convkey/4014/d825b3od72w816n5g.jpg",Ousama Ranking: Yuuki no Takarabako (2023)
+#EXTBG:https://4kwallpapers.com/images/walls/thumbs_2t/8324.png
+https://drive.google.com/uc?id=17L2Hhd3lFCcqSryDIOwz2L5-geqeNNEB&export=download/view
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
