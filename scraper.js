@@ -41,4 +41,4 @@ async function scrapeMediafire(id) {
 }
 
 // Rodar scraper para testar
-scrapeMediafire("H95CVCBQ").catch(console.error);
+scrapeMediafire("gpudmxqnf8a8rzf").catch(console.error);
