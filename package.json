@@ -1,0 +1,14 @@
+{
+  "name": "mediafire-scraper",
+  "version": "1.0.0",
+  "description": "Puppeteer bot + Cloudflare Worker to extract MediaFire direct links and store them in Cloudflare KV.",
+  "main": "scraper.js",
+  "scripts": {
+    "start": "node scraper.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "puppeteer": "^23.3.0",
+    "node-fetch": "^2.6.9"
+  }
+}

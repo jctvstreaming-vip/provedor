@@ -1,0 +1,10 @@
+name = "mediafire-scraper"
+main = "worker.js"
+compatibility_date = "2025-11-11"
+
+[vars]
+# none
+
+[kv_namespaces]
+binding = "MEDIAFIRE_KV"
+id = "KV_NAMESPACE_ID_PLACEHOLDER"
