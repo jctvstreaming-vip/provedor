@@ -6,5 +6,5 @@ compatibility_date = "2025-11-11"
 # none
 
 [kv_namespaces]
-binding = "MEDIAFIRE_KV"
-id = "KV_NAMESPACE_ID_PLACEHOLDER"
+binding = "mediafirelinks"
+id = "4f8a2851-fef0-4583-bda0-b78b96106cae"
