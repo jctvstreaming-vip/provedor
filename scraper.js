@@ -1,44 +1,59 @@
-import puppeteer from "puppeteer";
-import fetch from "node-fetch";
+import puppeteer from 'puppeteer';
+import fetch from 'node-fetch';
 
-const ACCOUNT_ID = "mediafirelinks_ID"; // Cloudflare
-const API_TOKEN = "SEU_API_TOKEN";
-const NAMESPACE = "mediafirelinks_ID"; // KV
+// Configurações Cloudflare
+const ACCOUNT_ID = 'mediafirelinks';
+const NAMESPACE_ID = '267a8171-d0f4-40dd-b740-d56711d94c07';
+const API_TOKEN = 'mediafirelinks';
 
-async function saveKV(key, value) {
-  const url = `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/storage/kv/namespaces/${NAMESPACE}/values/${key}`;
+// Lista de IDs do MediaFire para atualizar
+const mediafireIDs = [
+  'muas5t8ethatm40',
+  'outroID1',
+  'outroID2'
+];
+
+async function saveToKV(id, link) {
+  const url = `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/storage/kv/namespaces/${NAMESPACE_ID}/values/${id}`;
   const res = await fetch(url, {
-    method: "PUT",
+    method: 'PUT',
     headers: {
-      "Authorization": `Bearer ${API_TOKEN}`,
-      "Content-Type": "text/plain"
+      'Authorization': `Bearer ${API_TOKEN}`,
+      'Content-Type': 'text/plain'
     },
-    body: value
+    body: link
   });
-  return res.json();
+  const json = await res.json();
+  if (!json.success) console.log(`Erro ao salvar ${id}:`, json.errors);
+  else console.log(`✅ Salvo ${id} no KV`);
 }
 
-async function scrapeMediafire(id) {
+async function scrapeMediaFire(id) {
   const url = `https://www.mediafire.com/file/${id}/file`;
-
   const browser = await puppeteer.launch({ headless: true });
   const page = await browser.newPage();
-  await page.setUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120 Safari/537.36");
 
-  await page.goto(url, { waitUntil: "networkidle2" });
+  await page.setUserAgent(
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120 Safari/537.36"
+  );
 
-  const downloadLink = await page.evaluate(() => {
-    const btn = document.querySelector("a#downloadButton");
-    return btn ? btn.href : null;
-  });
+  await page.goto(url, { waitUntil: 'networkidle2' });
+
+  try {
+    await page.waitForSelector('a#downloadButton', { timeout: 15000 });
+    const link = await page.$eval('a#downloadButton', el => el.href);
+    await saveToKV(id, link);
+  } catch (err) {
+    console.log(`❌ Erro ao capturar ${id}:`, err.message);
+  }
 
   await browser.close();
-
-  if (!downloadLink) throw new Error("Não foi possível extrair o link.");
-
-  await saveKV(id, downloadLink);
-  console.log(`✅ ID ${id} salvo no KV: ${downloadLink}`);
 }
 
-// Rodar scraper para testar
-scrapeMediafire("gpudmxqnf8a8rzf").catch(console.error);
+(async () => {
+  for (const id of mediafireIDs) {
+    console.log(`🔹 Atualizando ${id}...`);
+    await scrapeMediaFire(id);
+  }
+  console.log('✅ Todos os links atualizados!');
+})();
