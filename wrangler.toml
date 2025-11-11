@@ -1,8 +1,8 @@
-name = "mediafire-worker"
+name = "mediafirelinks"
 type = "javascript"
-account_id = "mediafirelinks"
+account_id = "3469a0ba-58a7-45f1-b35e-28e89fd53f30"
 workers_dev = true
 
-[[kv_namespaces]]
-binding = "mediafirelinks_KV"
-id = "267a8171-d0f4-40dd-b740-d56711d94c07" # Seu Namespace ID
+kv_namespaces = [
+  { binding = "MEDIAFIRE_KV", id = "3469a0ba-58a7-45f1-b35e-28e89fd53f30" }
+]
