@@ -1,10 +1,8 @@
-name = "mediafire-scraper"
-main = "worker.js"
-compatibility_date = "2025-11-11"
+name = "mediafire-worker"
+type = "javascript"
+account_id = "mediafirelinks"
+workers_dev = true
 
-[vars]
-# none
-
-[kv_namespaces]
+[[kv_namespaces]]
 binding = "mediafirelinks_KV"
-id = "4f8a2851-fef0-4583-bda0-b78b96106cae"
+id = "267a8171-d0f4-40dd-b740-d56711d94c07" # Seu Namespace ID
