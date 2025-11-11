@@ -1,24 +1,14 @@
-// scraper.js
-// Usage: node scraper.js <MEDIAFIRE_ID>
-// Requires .env with CLOUDFLARE_ACCOUNT_ID, CLOUDFLARE_API_TOKEN, KV_NAMESPACE_ID
+import puppeteer from 'puppeteer';
+import fetch from 'node-fetch';
 
-require('dotenv').config();
-const puppeteer = require('puppeteer');
-const fetch = require('node-fetch');
+// Configurações Cloudflare
+const ACCOUNT_ID = 'seu_account_id';
+const API_TOKEN = 'seu_api_token';
+const NAMESPACE = 'mediafirelinks'; // mesmo binding do Worker
 
-const ACCOUNT_ID = process.env.CLOUDFLARE_ACCOUNT_ID;
-const API_TOKEN = process.env.CLOUDFLARE_API_TOKEN;
-const KV_NAMESPACE = process.env.KV_NAMESPACE_ID;
-
-if (!ACCOUNT_ID || !API_TOKEN || !KV_NAMESPACE) {
-  console.error('ERROR: Missing Cloudflare credentials in .env');
-  process.exit(1);
-}
-
-const MEDIAFIRE_BASE = 'https://www.mediafire.com/file/';
-
-async function saveToKV(key, value) {
-  const url = `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/storage/kv/namespaces/${KV_NAMESPACE}/values/${encodeURIComponent(key)}`;
+// Função para salvar KV
+async function saveKV(key, value) {
+  const url = `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/storage/kv/namespaces/${NAMESPACE}/values/${key}`;
   const res = await fetch(url, {
     method: 'PUT',
     headers: {
@@ -27,73 +17,40 @@ async function saveToKV(key, value) {
     },
     body: value
   });
-  const json = await res.json().catch(() => null);
-  if (!res.ok) {
-    throw new Error('KV write failed: ' + (json ? JSON.stringify(json) : res.statusText));
-  }
-  return true;
+  const data = await res.json();
+  return data;
 }
 
-async function extractDirectLink(page, id) {
-  const url = `${MEDIAFIRE_BASE}${id}/file`;
-  await page.goto(url, { waitUntil: 'networkidle2', timeout: 60000 });
+// Função principal
+async function scrapeMediafire(id) {
+  const url = `https://www.mediafire.com/file/${id}/file`;
 
-  // Try to get redirect location by clicking download button or reading HTML
-  try {
-    // Try to click the download button if present
-    const selectors = ['a#downloadButton', 'a[data-href]', 'a[href*="/download/"]'];
-    for (const sel of selectors) {
-      const el = await page.$(sel);
-      if (el) {
-        const href = await page.evaluate(e => e.href || e.getAttribute('data-href') || e.getAttribute('data-url'), el);
-        if (href && href.includes('download')) return href;
-      }
-    }
-  } catch (e) {
-    // ignore
-  }
-
-  // Fallback: search page HTML for download* link
-  const html = await page.content();
-  const regex = /(https?:\/\/download[0-9a-zA-Z.\-]+\.mediafire\.com\/[^\"'<> ]+\.(mp4|mkv|avi|mov|mp3))/i;
-  const m = html.match(regex);
-  if (m && m[0]) return m[0];
-
-  // Try download_repair endpoint
-  try {
-    const repairUrl = `https://www.mediafire.com/download_repair.php?qkey=${id}&origin=click_button`;
-    await page.goto(repairUrl, { waitUntil: 'networkidle2', timeout: 20000 });
-    const repairHtml = await page.content();
-    const m2 = repairHtml.match(regex);
-    if (m2 && m2[0]) return m2[0];
-  } catch (e) {}
-
-  return null;
-}
-
-(async () => {
-  const id = process.argv[2];
-  if (!id) {
-    console.error('Usage: node scraper.js <MEDIAFIRE_ID>');
-    process.exit(1);
-  }
-
-  const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox','--disable-setuid-sandbox'] });
+  const browser = await puppeteer.launch({ headless: true });
   const page = await browser.newPage();
-  try {
-    console.log('Looking for direct link for:', id);
-    const link = await extractDirectLink(page, id);
-    if (!link) {
-      console.error('No direct link found.');
-      await browser.close();
-      process.exit(2);
-    }
-    console.log('Found:', link);
-    await saveToKV(id, link);
-    console.log('Saved to Cloudflare KV under key:', id);
-  } catch (err) {
-    console.error('Error:', err.message);
-  } finally {
-    await browser.close();
+
+  await page.setUserAgent(
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120 Safari/537.36"
+  );
+
+  await page.goto(url, { waitUntil: 'networkidle2' });
+
+  // Tenta extrair o link do botão de download
+  const downloadLink = await page.evaluate(() => {
+    const btn = document.querySelector('a#downloadButton');
+    return btn ? btn.href : null;
+  });
+
+  await browser.close();
+
+  if (!downloadLink) {
+    throw new Error('Não foi possível extrair o link do MediaFire.');
   }
-})();
+
+  // Salva no KV
+  await saveKV(id, downloadLink);
+  console.log(`✅ ID ${id} salvo no KV: ${downloadLink}`);
+}
+
+// Exemplo de execução
+const mediafireID = 'H95CVCBQ'; // ID do arquivo
+scrapeMediafire(mediafireID).catch(console.error);
