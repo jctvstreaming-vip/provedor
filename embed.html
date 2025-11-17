@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"content="width=device-width,initial-scale=1">
+<title>JC TV — Player Embed</title>
+<style>
+  body,html {
+    margin:0;
+    padding:0;
+    background:black;
+    overflow:hidden;
+  }
+  #tunnel {
+    width:100vw;
+    height:100vh;
+    border:0;
+  }
+
+  /* Tela de erro (caso ID não exista) */
+  #erro {
+    color:white;
+    font-family:sans-serif;
+    text-align:center;
+    margin-top:40px;
+    font-size:22px;
+    display:none;
+  }
+</style>
+</head>
+<body>
+
+<div id="erro">❌ Canal não encontrado</div>
+
+<iframe
+  id="tunnel"
+  allow="autoplay; encrypted-media; fullscreen">
+</iframe>
+
+<script>
+/* -------------------------------------
+   💠 LISTA DE CANAIS DISPONÍVEIS
+------------------------------------- */
+const CANAIS = {
+  "animalplanet": "https://redecanaistv.vu/player3/ch.php?categoria=live&canal=animalplanet",
+  "band": "https://redecanaistv.vu/player3/ch.php?categoria=live&canal=band",
+  "bobosp": "https://redecanaistv.vu/player3/ch.php?categoria=live&canal=bobosp",
+  "boborj": "https://redecanaistv.vu/player3/ch.php?categoria=live&canal=boborj"
+};
+
+/* -------------------------------------
+   💠 PEGAR ID DA URL
+------------------------------------- */
+const params = new URLSearchParams(window.location.search);
+const canalID = params.get("id");
+
+/* -------------------------------------
+   💠 SE O ID EXISTIR, ABRE O IFRAME
+------------------------------------- */
+if (canalID && CANAIS[canalID]) {
+  document.getElementById("tunnel").src = CANAIS[canalID];
+} else {
+  document.getElementById("tunnel").style.display = "none";
+  document.getElementById("erro").style.display = "block";
+}
+
+/* -------------------------------------
+   💠 BLOQUEIO TOTAL DE POP-UPS / ADs
+------------------------------------- */
+window.open = function () { return null; };
+document.addEventListener("click", e => e.stopPropagation(), true);
+</script>
+
+</body>
+</html>
